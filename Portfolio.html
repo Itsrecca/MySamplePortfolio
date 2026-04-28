@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recca Joy D. Lepatan | Web Developer & Digital Artist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --dark: #0f172a;
+      --light: #f8fafc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .logo {
+      font-size: 2.0rem;
+      font-weight: 700;
+      color: white;
+      font-family: "Dancing Script", cursive;
+      font-optical-sizing: auto;
+      font-style: normal;
+      }
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--primary); }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5%;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1920x1080/?tech,abstract') center/cover;
+    }
+    .hero h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #a5b4fc, #c4d0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #94a3b8;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin: 0 10px;
+    }
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+    }
+
+    section {
+      padding: 100px 5%;
+    }
+    h2 {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      color: white;
+    }
+
+    /* About */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .skill-card {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.4s;
+    }
+    .skill-card:hover {
+      transform: translateY(-15px);
+    }
+
+    /* Projects - Flip Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .flip-card {
+      perspective: 1000px;
+      height: 420px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      border-radius: 16px;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+    .flip-card-front {
+      background: linear-gradient(135deg, #1e2937, #334155);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    .flip-card-back {
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      color: white;
+    }
+    .flip-card h3 { font-size: 1.6rem; margin: 1rem 0; }
+    .tech-stack {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+
+    /* Work Experience */
+    .experience {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .exp-item {
+      background: rgba(255,255,255,0.05);
+      padding: 2.5rem;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(0,0,0,0.5);
+      color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3rem; }
+      .about { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">rj</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1>Recca Joy D. Lepatan</h1>
+      <p>Web Developer &amp; Digital Artist</p>
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="mailto:lepatanreccajoy@gmail.com" class="btn" style="background:transparent; border:2px solid white;">Hire Me</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about">
+      <div>
+        <h3>Turning Ideas into Digital Experiences</h3>
+        <p style="font-size:1.1rem; color:#cbd5e1;">
+          22-year-old passionate Web Developer and Digital Artist from Cebu City, Philippines. 
+          Fresh Graduate of <strong>Bachelor of Science in Information Technology</strong> at Cebu Eastern College Inc. (2022–2026).
+        </p>
+        <p style="margin-top:1.5rem;">
+          I specialize in creating beautiful, responsive websites and digital designs. 
+          With experience in both customer service and full-stack development, I bring both technical skill and strong communication to every project.
+        </p>
+        <p><strong>Languages:</strong> Cebuano, English, Tagalog</p>
+      </div>
+      <img src="Img/1.jpeg" alt="Recca Joy Lepatan">
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" style="background:#1e2937;">
+    <h2>Skills &amp; Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>💻 Web Development</h3>
+        <p>HTML, CSS, JavaScript, Python, Responsive Design</p>
+      </div>
+      <div class="skill-card">
+        <h3>🎨 Design &amp; Creative</h3>
+        <p>Adobe Photoshop, Canva, UI/UX Design (Figma), Digital Art</p>
+      </div>
+      <div class="skill-card">
+        <h3>🛠️ Full Stack &amp; AI</h3>
+        <p>Front-end &amp; Back-end Development, Databases, AI Tools, Machine Learning Basics</p>
+      </div>
+      <div class="skill-card">
+        <h3>👥 Soft Skills</h3>
+        <p>Team Leadership, Customer Service, Communication, Adaptability, Creativity, Project Management</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+
+      <!-- Flip Card 1 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h3>Digital Platform for Ate Nays Flowershop</h3>
+            <p>Capstone Project</p>
+            <div class="tech-stack">Figma • Canva • UI/UX</div>
+          </div>
+          <div class="flip-card-back">
+            <h3>Capstone Project</h3>
+            <p>Designed and developed an online platform to boost sales for a local flower shop using modern UI/UX principles.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flip Card 2 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h3>Prompt Quest</h3>
+            <p>Proweaver 1st Hackathon</p>
+            <div class="tech-stack">HTML • CSS • JavaScript</div>
+          </div>
+          <div class="flip-card-back">
+            <h3>Galactic Pulse</h3>
+            <p>Built Galactic Pulse, a fast-paced browser-based space arcade game using HTML, CSS, and JavaScript, where players navigate a spaceship through cosmic obstacles while collecting energy pulses.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flip Card 3 -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h3>Full Stack Training Project</h3>
+            <p>Lifewood • Cebu IT Park (2025)</p>
+            <div class="tech-stack">AI Tools • Full Stack • Vercel</div>
+          </div>
+          <div class="flip-card-back">
+            <h3>Data Curator / Full Stack Dev</h3>
+            <p>Developed responsive web applications, managed databases, deployed using Vercel, and explored machine learning with AI tools.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" style="background:#1e2937;">
+    <h2>Work Experience</h2>
+    <div class="experience">
+      <div class="exp-item">
+        <h3>Customer Service / Graphic Designer — The Printing Depot</h3>
+        <p style="color:#94a3b8;"><strong>Feb 2020 – May 2024</strong> | Cebu City</p>
+        <ul style="margin-top:1rem; padding-left:1.5rem;">
+          <li>Handled customer inquiries, design requirements, and order coordination</li>
+          <li>Created print-ready designs using Adobe Photoshop and Canva</li>
+          <li>Served as Team Leader for Work Production</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Let's Connect</h2>
+    <p style="text-align:center; font-size:1.3rem; max-width:600px; margin:0 auto 3rem;">
+      I'm always open to new opportunities and collaborations.
+    </p>
+    <div style="text-align:center;">
+      <a href="mailto:lepatanreccajoy@gmail.com" class="btn">Email Me</a>
+      <a href="https://www.facebook.com/rec.ca.933908" class="btn">Facebook</a>
+      <a href="https://github.com/Itsrecca" target="_blank" class="btn" style="background:#334155;">GitHub</a>
+      <a href="https://www.linkedin.com/in/reccajoylepatan" target="_blank" class="btn" style="background:#334155;">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Recca Joy D. Lepatan. Made with passion in Cebu City, Philippines.</p>
+  </footer>
+
+</body>
+</html>
